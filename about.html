@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-MERCH — О нас</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- НАВИГАЦИЯ (та же) -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center text-white text-2xl font-bold">K</div>
+                    <span class="text-2xl font-bold tracking-wider">K-MERCH</span>
+                </a>
+                <div class="hidden md:flex items-center gap-8 text-lg">
+                    <a href="index.html" class="hover:text-red-500">Главная</a>
+                    <a href="catalog.html" class="hover:text-red-500">Каталог</a>
+                    <a href="about.html" class="text-red-500 font-bold">О нас</a>
+                    <a href="account.html" class="hover:text-red-500">Личный кабинет</a>
+                </div>
+                <div class="flex items-center gap-6">
+                    <a href="cart.html" class="relative"><i class="fas fa-shopping-bag text-2xl"></i><span id="cart-count-nav2" class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] rounded-full w-5 h-5 flex items-center justify-center">0</span></a>
+                    <a href="account.html"><i class="fas fa-user text-2xl"></i></a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-3xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-6 py-6 flex flex-col gap-6 text-lg">
+            <a href="index.html">Главная</a><a href="catalog.html">Каталог</a><a href="about.html" class="text-red-500 font-bold">О нас</a><a href="cart.html">Корзина</a><a href="account.html">Личный кабинет</a>
+        </div>
+    </nav>
+
+    <div class="max-w-4xl mx-auto px-6 py-20">
+        <h1 class="text-5xl font-bold text-center mb-12">О нас</h1>
+        <div class="prose prose-lg mx-auto text-gray-700">
+            <p class="text-xl leading-relaxed">K-MERCH — официальный магазин корейского мерча с доставкой по всей России.</p>
+            <p>Мы работаем напрямую с фабриками в Сеуле с 2022 года. Только оригинальная продукция: официальные альбомы, одежда, аксессуары и лимитированные коллекции от BTS, BLACKPINK, Stray Kids, NewJeans, TWICE и многих других.</p>
+            <div class="my-12 bg-white p-10 rounded-3xl shadow">
+                <h3 class="text-2xl font-semibold mb-6">Почему выбирают нас?</h3>
+                <ul class="space-y-6">
+                    <li class="flex gap-6"><i class="fas fa-check-circle text-3xl text-red-500 mt-1"></i><span>Гарантия оригинальности и качество</span></li>
+                    <li class="flex gap-6"><i class="fas fa-check-circle text-3xl text-red-500 mt-1"></i><span>Быстрая доставка 7–14 дней</span></li>
+                    <li class="flex gap-6"><i class="fas fa-check-circle text-3xl text-red-500 mt-1"></i><span>Оплата при получении</span></li>
+                    <li class="flex gap-6"><i class="fas fa-check-circle text-3xl text-red-500 mt-1"></i><span>Поддержка 24/7 в Telegram</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-sm opacity-70">© 2026 K-MERCH. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Общий код корзины и меню (копия из других страниц)
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.querySelectorAll('#cart-count-nav, #cart-count-nav2').forEach(el => el.textContent = count);
+        }
+        function initMobileMenu() {
+            document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.toggle('hidden');
+            });
+        }
+        window.onload = () => {
+            updateCartCount();
+            initMobileMenu();
+        };
+    </script>
+</body>
+</html>

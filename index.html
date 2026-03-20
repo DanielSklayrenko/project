@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-MERCH — Главная</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { font-family: 'Segoe UI', system-ui, sans-serif; }
+        .hero-bg { background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://picsum.photos/id/1015/1920/1080') center/cover no-repeat; }
+        .product-card { transition: all 0.3s; }
+        .product-card:hover { transform: scale(1.05); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- НАВИГАЦИЯ (одинаковая на всех страницах) -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- ЛОГО -->
+                <a href="index.html" class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center text-white text-2xl font-bold">K</div>
+                    <span class="text-2xl font-bold tracking-wider">K-MERCH</span>
+                </a>
+
+                <!-- МЕНЮ -->
+                <div class="hidden md:flex items-center gap-8 text-lg">
+                    <a href="index.html" class="hover:text-red-500 transition">Главная</a>
+                    <a href="catalog.html" class="hover:text-red-500 transition">Каталог</a>
+                    <a href="about.html" class="hover:text-red-500 transition">О нас</a>
+                    <a href="account.html" class="hover:text-red-500 transition">Личный кабинет</a>
+                </div>
+
+                <!-- ИКОНКИ -->
+                <div class="flex items-center gap-6">
+                    <a href="cart.html" class="relative">
+                        <i class="fas fa-shopping-bag text-2xl"></i>
+                        <span id="cart-count-nav2" class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                    </a>
+                    <a href="account.html">
+                        <i class="fas fa-user text-2xl"></i>
+                    </a>
+                </div>
+
+                <!-- МОБИЛЬНОЕ МЕНЮ -->
+                <button id="mobile-menu-btn" class="md:hidden text-3xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- МОБИЛЬНОЕ МЕНЮ -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="flex flex-col px-6 py-6 gap-6 text-lg">
+                <a href="index.html" class="hover:text-red-500">Главная</a>
+                <a href="catalog.html" class="hover:text-red-500">Каталог</a>
+                <a href="about.html" class="hover:text-red-500">О нас</a>
+                <a href="cart.html" class="hover:text-red-500">Корзина</a>
+                <a href="account.html" class="hover:text-red-500">Личный кабинет</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ГЕРО -->
+    <header class="hero-bg h-screen flex items-center text-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h1 class="text-6xl md:text-7xl font-black tracking-tighter mb-4">КОРЕЙСКИЙ МЕРЧ</h1>
+            <p class="text-2xl md:text-3xl mb-10 max-w-2xl mx-auto">Официальный магазин K-pop, K-drama и аниме мерча из Сеула</p>
+            <a href="catalog.html" 
+               class="inline-block bg-red-500 hover:bg-red-600 text-white text-xl font-bold px-12 py-6 rounded-2xl transition shadow-xl">
+                Перейти в каталог →
+            </a>
+        </div>
+    </header>
+
+    <!-- ХИТЫ ПРОДАЖ -->
+    <section class="max-w-7xl mx-auto px-6 py-20">
+        <h2 class="text-4xl font-bold text-center mb-12">Хиты продаж</h2>
+        <div id="featured-products" class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <!-- Заполняется JS -->
+        </div>
+    </section>
+
+    <!-- БАННЕР -->
+    <div class="bg-red-500 py-16 text-white text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <p class="text-3xl font-medium">Доставка по всей России за 7–14 дней • Оплата при получении • 100% оригинал</p>
+        </div>
+    </div>
+
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-sm opacity-70">© 2026 K-MERCH. Все права защищены. Сайт создан для демонстрации.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind script
+        function initTailwind() {
+            // Уже подключен через CDN
+        }
+
+        // Данные товаров (используются на всех страницах)
+        const allProducts = [
+            { id: 1, name: "Футболка BTS Dynamite", price: 1490, img: "https://ae04.alicdn.com/kf/Sf17c814750c942f9a83745eafa7859bdP.jpg" },
+            { id: 2, name: "Светящийся браслет BLACKPINK", price: 890, img: "https://basket-12.wbbasket.ru/vol1716/part171610/171610060/images/big/1.webp" },
+            { id: 3, name: "Плакат Stray Kids", price: 590, img: "https://basket-23.wbbasket.ru/vol4131/part413163/413163066/images/big/1.webp" },
+            { id: 4, name: "Кружка TWICE", price: 790, img: "https://avatars.mds.yandex.net/i?id=06aa82e4be4c14f9926679451bb8736d60973fb6-9223337-images-thumbs&n=13" },
+            { id: 5, name: "Набор стикеров K-pop", price: 390, img: "https://avatars.mds.yandex.net/i?id=e06e8abc50a10697cece21f5f9861701_l-4809712-images-thumbs&n=13" },
+            { id: 6, name: "Худи NewJeans", price: 2290, img: "https://basket-15.wbbasket.ru/vol2263/part226355/226355127/images/big/1.webp" }
+        ];
+
+        // Корзина
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+        }
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const els = document.querySelectorAll('#cart-count-nav, #cart-count-nav2');
+            els.forEach(el => { if(el) el.textContent = count; });
+        }
+        function addToCart(productId) {
+            const product = allProducts.find(p => p.id === productId);
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            saveCart();
+            alert(`✅ ${product.name} добавлен в корзину!`);
+        }
+
+        // Мобильное меню
+        function initMobileMenu() {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+        }
+
+        // Хиты на главной
+        function renderFeatured() {
+            const container = document.getElementById('featured-products');
+            const featured = allProducts.slice(0, 4);
+            container.innerHTML = featured.map(p => `
+                <div class="product-card bg-white rounded-3xl overflow-hidden shadow">
+                    <img src="${p.img}" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-semibold text-lg mb-2">${p.name}</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold">${p.price} ₽</span>
+                            <button onclick="addToCart(${p.id})" 
+                                    class="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-2xl text-sm font-medium">
+                                В корзину
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Инициализация
+        window.onload = () => {
+            initTailwind();
+            initMobileMenu();
+            renderFeatured();
+            updateCartCount();
+        };
+    </script>
+</body>
+</html>
